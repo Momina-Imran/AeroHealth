@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Aura BreatheWell</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="profile-page">
+    <header class="nav-header">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-wind"></i>
+                <span>Aura BreatheWell</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-item">
+                    <i class="fas fa-lungs"></i>
+                    <span>Breathe</span>
+                </a>
+                <a href="dashboard.html" class="nav-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item active">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <a href="settings.html" class="nav-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="profile-main">
+        <div class="profile-container">
+            <!-- Profile Header -->
+            <section class="profile-header">
+                <div class="profile-avatar-section">
+                    <div class="avatar-container">
+                        <div class="avatar" id="profileAvatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <button class="avatar-edit-btn" onclick="changeAvatar()">
+                            <i class="fas fa-camera"></i>
+                        </button>
+                    </div>
+                    <div class="profile-info">
+                        <h1 id="profileName">Welcome User</h1>
+                        <p id="profileEmail">user@example.com</p>
+                        <div class="profile-stats">
+                            <div class="stat">
+                                <span class="stat-value" id="profileDays">0</span>
+                                <span class="stat-label">Days</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" id="profileSessions">0</span>
+                                <span class="stat-label">Sessions</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" id="profileMinutes">0</span>
+                                <span class="stat-label">Minutes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-actions">
+                    <button class="btn-secondary" onclick="editProfile()">
+                        <i class="fas fa-edit"></i>
+                        Edit Profile
+                    </button>
+                    <button class="btn-primary" onclick="shareProfile()">
+                        <i class="fas fa-share"></i>
+                        Share Progress
+                    </button>
+                </div>
+            </section>
+
+            <!-- Wellness Journey -->
+            <section class="wellness-journey">
+                <h2>Your Wellness Journey</h2>
+                <div class="journey-timeline">
+                    <div class="timeline-item completed">
+                        <div class="timeline-icon">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>First Session</h3>
+                            <p>Started your breathing journey</p>
+                            <span class="timeline-date" id="firstSessionDate">--</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item completed">
+                        <div class="timeline-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>7-Day Streak</h3>
+                            <p>Maintained consistent practice</p>
+                            <span class="timeline-date" id="streakDate">--</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>30-Day Milestone</h3>
+                            <p>Complete 30 days of practice</p>
+                            <span class="timeline-date">Upcoming</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Wellness Master</h3>
+                            <p>100 sessions completed</p>
+                            <span class="timeline-date">Future Goal</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Achievements -->
+            <section class="achievements-section">
+                <h2>Achievements</h2>
+                <div class="achievements-grid" id="achievementsGrid">
+                    <!-- Achievements will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Personal Insights -->
+            <section class="insights-section">
+                <h2>Personal Insights</h2>
+                <div class="insights-cards">
+                    <div class="insight-card">
+                        <div class="insight-icon">🌅</div>
+                        <div class="insight-content">
+                            <h3>Best Practice Time</h3>
+                            <p id="bestTime">Morning sessions work best for you</p>
+                        </div>
+                    </div>
+                    <div class="insight-card">
+                        <div class="insight-icon">🎯</div>
+                        <div class="insight-content">
+                            <h3>Favorite Session</h3>
+                            <p id="favoriteSession">You prefer Deep Calm sessions</p>
+                        </div>
+                    </div>
+                    <div class="insight-card">
+                        <div class="insight-icon">📈</div>
+                        <div class="insight-content">
+                            <h3>Progress Trend</h3>
+                            <p id="progressTrend">Consistent improvement this month</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Health Integration -->
+            <section class="health-integration">
+                <h2>Health Integration</h2>
+                <div class="integration-cards">
+                    <div class="integration-card">
+                        <div class="integration-icon">
+                            <i class="fab fa-apple"></i>
+                        </div>
+                        <div class="integration-content">
+                            <h3>Apple Health</h3>
+                            <p>Sync mindfulness minutes</p>
+                            <button class="integration-btn" onclick="connectAppleHealth()">
+                                Connect
+                            </button>
+                        </div>
+                    </div>
+                    <div class="integration-card">
+                        <div class="integration-icon">
+                            <i class="fab fa-google"></i>
+                        </div>
+                        <div class="integration-content">
+                            <h3>Google Fit</h3>
+                            <p>Track wellness activities</p>
+                            <button class="integration-btn" onclick="connectGoogleFit()">
+                                Connect
+                            </button>
+                        </div>
+                    </div>
+                    <div class="integration-card">
+                        <div class="integration-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="integration-content">
+                            <h3>Heart Rate</h3>
+                            <p>Monitor breathing impact</p>
+                            <button class="integration-btn disabled">
+                                Coming Soon
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Data Export -->
+            <section class="data-section">
+                <h2>Your Data</h2>
+                <div class="data-cards">
+                    <div class="data-card">
+                        <div class="data-icon">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <div class="data-content">
+                            <h3>Export Data</h3>
+                            <p>Download your complete wellness data</p>
+                            <button class="btn-secondary" onclick="exportData()">
+                                <i class="fas fa-download"></i>
+                                Export JSON
+                            </button>
+                        </div>
+                    </div>
+                    <div class="data-card">
+                        <div class="data-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="data-content">
+                            <h3>Detailed Report</h3>
+                            <p>Generate comprehensive wellness report</p>
+                            <button class="btn-secondary" onclick="generateReport()">
+                                <i class="fas fa-file-pdf"></i>
+                                Generate PDF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal-overlay" id="editProfileModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Edit Profile</h3>
+                <button class="modal-close" onclick="closeModal('editProfileModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editProfileForm">
+                    <div class="form-group">
+                        <label for="editFirstName">First Name</label>
+                        <input type="text" id="editFirstName" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editLastName">Last Name</label>
+                        <input type="text" id="editLastName" name="lastName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editEmail">Email</label>
+                        <input type="email" id="editEmail" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editBio">Bio</label>
+                        <textarea id="editBio" name="bio" rows="3" placeholder="Tell us about yourself..."></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal('editProfileModal')">
+                    Cancel
+                </button>
+                <button class="btn-primary" onclick="saveProfile()">
+                    Save Changes
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Avatar Selection Modal -->
+    <div class="modal-overlay" id="avatarModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Choose Avatar</h3>
+                <button class="modal-close" onclick="closeModal('avatarModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="avatar-options">
+                    <div class="avatar-option" onclick="selectAvatar('user')">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="avatar-option" onclick="selectAvatar('user-circle')">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="avatar-option" onclick="selectAvatar('user-ninja')">
+                        <i class="fas fa-user-ninja"></i>
+                    </div>
+                    <div class="avatar-option" onclick="selectAvatar('smile')">
+                        <i class="fas fa-smile"></i>
+                    </div>
+                    <div class="avatar-option" onclick="selectAvatar('laugh')">
+                        <i class="fas fa-laugh"></i>
+                    </div>
+                    <div class="avatar-option" onclick="selectAvatar('heart')">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProfileData();
+            loadAchievements();
+            loadInsights();
+        });
+
+        function loadProfileData() {
+            // Load from localStorage (will be replaced with Firebase)
+            const profile = JSON.parse(localStorage.getItem('userProfile') || '{}');
+            const sessions = JSON.parse(localStorage.getItem('breathingSessions') || '[]');
+            
+            // Update profile info
+            document.getElementById('profileName').textContent = profile.name || 'Guest User';
+            document.getElementById('profileEmail').textContent = profile.email || 'guest@breathewell.app';
+            
+            // Calculate stats
+            const totalSessions = sessions.length;
+            const totalMinutes = Math.round(sessions.reduce((sum, session) => sum + (session.duration || 0), 0) / 60);
+            const daysActive = calculateActiveDays(sessions);
+            
+            document.getElementById('profileSessions').textContent = totalSessions;
+            document.getElementById('profileMinutes').textContent = totalMinutes;
+            document.getElementById('profileDays').textContent = daysActive;
+            
+            // Set first session date
+            if (sessions.length > 0) {
+                const firstSession = new Date(sessions[0].date);
+                document.getElementById('firstSessionDate').textContent = firstSession.toLocaleDateString();
+            }
+        }
+
+        function calculateActiveDays(sessions) {
+            const uniqueDates = new Set();
+            sessions.forEach(session => {
+                const date = new Date(session.date).toDateString();
+                uniqueDates.add(date);
+            });
+            return uniqueDates.size;
+        }
+
+        function loadAchievements() {
+            const sessions = JSON.parse(localStorage.getItem('breathingSessions') || '[]');
+            const achievements = [];
+            
+            // Check for various achievements
+            if (sessions.length >= 1) {
+                achievements.push({
+                    icon: '🎯',
+                    title: 'First Step',
+                    description: 'Completed your first session',
+                    earned: true
+                });
+            }
+            
+            if (sessions.length >= 10) {
+                achievements.push({
+                    icon: '🔥',
+                    title: 'Getting Started',
+                    description: 'Completed 10 sessions',
+                    earned: true
+                });
+            }
+            
+            if (sessions.length >= 50) {
+                achievements.push({
+                    icon: '⭐',
+                    title: 'Dedicated Practitioner',
+                    description: 'Completed 50 sessions',
+                    earned: true
+                });
+            }
+            
+            if (sessions.length >= 100) {
+                achievements.push({
+                    icon: '👑',
+                    title: 'Wellness Master',
+                    description: 'Completed 100 sessions',
+                    earned: true
+                });
+            }
+            
+            // Add unearned achievements
+            const totalAchievements = [
+                { icon: '🎯', title: 'First Step', threshold: 1 },
+                { icon: '🔥', title: 'Getting Started', threshold: 10 },
+                { icon: '⭐', title: 'Dedicated Practitioner', threshold: 50 },
+                { icon: '👑', title: 'Wellness Master', threshold: 100 },
+                { icon: '💎', title: 'Legend', threshold: 500 }
+            ];
+            
+            totalAchievements.forEach(achievement => {
+                const earned = sessions.length >= achievement.threshold;
+                if (!achievements.find(a => a.title === achievement.title)) {
+                    achievements.push({
+                        ...achievement,
+                        description: `Complete ${achievement.threshold} sessions`,
+                        earned: earned
+                    });
+                }
+            });
+            
+            const achievementsGrid = document.getElementById('achievementsGrid');
+            achievementsGrid.innerHTML = achievements.map(achievement => `
+                <div class="achievement-card ${achievement.earned ? 'earned' : 'locked'}">
+                    <div class="achievement-icon">${achievement.icon}</div>
+                    <div class="achievement-content">
+                        <h3>${achievement.title}</h3>
+                        <p>${achievement.description}</p>
+                    </div>
+                    ${achievement.earned ? '<div class="achievement-earned"><i class="fas fa-check"></i></div>' : ''}
+                </div>
+            `).join('');
+        }
+
+        function loadInsights() {
+            const sessions = JSON.parse(localStorage.getItem('breathingSessions') || '[]');
+            
+            if (sessions.length === 0) return;
+            
+            // Analyze best practice time
+            const timeAnalysis = sessions.reduce((acc, session) => {
+                const hour = new Date(session.date).getHours();
+                const timeOfDay = hour < 12 ? 'Morning' : hour < 17 ? 'Afternoon' : 'Evening';
+                acc[timeOfDay] = (acc[timeOfDay] || 0) + 1;
+                return acc;
+            }, {});
+            
+            const bestTime = Object.keys(timeAnalysis).reduce((a, b) => 
+                timeAnalysis[a] > timeAnalysis[b] ? a : b
+            );
+            
+            document.getElementById('bestTime').textContent = `${bestTime} sessions work best for you`;
+            
+            // Analyze favorite session type
+            const typeAnalysis = sessions.reduce((acc, session) => {
+                acc[session.type] = (acc[session.type] || 0) + 1;
+                return acc;
+            }, {});
+            
+            const favoriteType = Object.keys(typeAnalysis).reduce((a, b) => 
+                typeAnalysis[a] > typeAnalysis[b] ? a : b
+            );
+            
+            const typeNames = {
+                calm: 'Deep Calm',
+                energy: 'Energizing',
+                focus: 'Focused Mind',
+                sleep: 'Sleep Ready'
+            };
+            
+            document.getElementById('favoriteSession').textContent = 
+                `You prefer ${typeNames[favoriteType] || 'breathing'} sessions`;
+        }
+
+        function editProfile() {
+            const profile = JSON.parse(localStorage.getItem('userProfile') || '{}');
+            document.getElementById('editFirstName').value = profile.firstName || '';
+            document.getElementById('editLastName').value = profile.lastName || '';
+            document.getElementById('editEmail').value = profile.email || '';
+            document.getElementById('editBio').value = profile.bio || '';
+            
+            document.getElementById('editProfileModal').classList.add('active');
+        }
+
+        function saveProfile() {
+            const formData = new FormData(document.getElementById('editProfileForm'));
+            const profile = {
+                firstName: formData.get('firstName'),
+                lastName: formData.get('lastName'),
+                email: formData.get('email'),
+                bio: formData.get('bio'),
+                name: `${formData.get('firstName')} ${formData.get('lastName')}`
+            };
+            
+            localStorage.setItem('userProfile', JSON.stringify(profile));
+            loadProfileData();
+            closeModal('editProfileModal');
+            
+            showNotification('Profile updated successfully!', 'success');
+        }
+
+        function changeAvatar() {
+            document.getElementById('avatarModal').classList.add('active');
+        }
+
+        function selectAvatar(iconClass) {
+            const avatar = document.getElementById('profileAvatar');
+            avatar.innerHTML = `<i class="fas fa-${iconClass}"></i>`;
+            
+            // Save to profile
+            const profile = JSON.parse(localStorage.getItem('userProfile') || '{}');
+            profile.avatar = iconClass;
+            localStorage.setItem('userProfile', JSON.stringify(profile));
+            
+            closeModal('avatarModal');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        function shareProfile() {
+            const sessions = JSON.parse(localStorage.getItem('breathingSessions') || '[]');
+            const totalMinutes = Math.round(sessions.reduce((sum, session) => sum + (session.duration || 0), 0) / 60);
+            
+            const shareText = `I've completed ${sessions.length} breathing sessions and practiced for ${totalMinutes} minutes on Aura BreatheWell! 🧘‍♀️ #BreatheWell #Wellness`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'My Wellness Progress',
+                    text: shareText,
+                    url: window.location.origin
+                });
+            } else {
+                navigator.clipboard.writeText(shareText);
+                showNotification('Progress copied to clipboard!', 'success');
+            }
+        }
+
+        function exportData() {
+            const allData = {
+                profile: JSON.parse(localStorage.getItem('userProfile') || '{}'),
+                sessions: JSON.parse(localStorage.getItem('breathingSessions') || '[]'),
+                settings: JSON.parse(localStorage.getItem('appSettings') || '{}'),
+                exportDate: new Date().toISOString()
+            };
+            
+            const dataStr = JSON.stringify(allData, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(dataBlob);
+            link.download = `breathewell-profile-${new Date().toISOString().split('T')[0]}.json`;
+            link.click();
+            
+            showNotification('Data exported successfully!', 'success');
+        }
+
+        function generateReport() {
+            showNotification('PDF report generation coming soon!', 'info');
+        }
+
+        function connectAppleHealth() {
+            showNotification('Apple Health integration coming soon!', 'info');
+        }
+
+        function connectGoogleFit() {
+            showNotification('Google Fit integration coming soon!', 'info');
+        }
+
+        function showNotification(message, type = 'info') {
+            // Simple notification system
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#2ed573' : type === 'error' ? '#ff4757' : '#5352ed'};
+                color: white;
+                padding: 15px 20px;
+                border-radius: 8px;
+                z-index: 1000;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

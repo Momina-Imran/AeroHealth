@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Aura BreatheWell</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dashboard-page">
+    <header class="nav-header">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-wind"></i>
+                <span>Aura BreatheWell</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-item">
+                    <i class="fas fa-lungs"></i>
+                    <span>Breathe</span>
+                </a>
+                <a href="#" class="nav-item active">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <a href="settings.html" class="nav-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        <div class="dashboard-container">
+            <!-- Dashboard Header -->
+            <section class="dashboard-header">
+                <div class="header-content">
+                    <h1>Your Wellness Dashboard</h1>
+                    <p>Track your breathing journey and environmental health insights</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-primary" id="newSessionBtn">
+                        <i class="fas fa-plus"></i>
+                        New Session
+                    </button>
+                    <button class="btn-secondary" id="exportBtn">
+                        <i class="fas fa-download"></i>
+                        Export Data
+                    </button>
+                </div>
+            </section>
+
+            <!-- Key Metrics -->
+            <section class="metrics-section">
+                <div class="metrics-grid">
+                    <div class="metric-card primary">
+                        <div class="metric-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="metric-content">
+                            <div class="metric-value" id="totalTimeMetric">0</div>
+                            <div class="metric-label">Total Practice Time</div>
+                            <div class="metric-unit">minutes</div>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card success">
+                        <div class="metric-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="metric-content">
+                            <div class="metric-value" id="sessionsMetric">0</div>
+                            <div class="metric-label">Total Sessions</div>
+                            <div class="metric-unit">completed</div>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card warning">
+                        <div class="metric-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="metric-content">
+                            <div class="metric-value" id="streakMetric">0</div>
+                            <div class="metric-label">Current Streak</div>
+                            <div class="metric-unit">days</div>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card info">
+                        <div class="metric-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="metric-content">
+                            <div class="metric-value" id="aqiMetric">--</div>
+                            <div class="metric-label">Avg Air Quality</div>
+                            <div class="metric-unit">AQI</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Charts Section -->
+            <section class="charts-section">
+                <div class="charts-grid">
+                    <!-- Session Types Distribution -->
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Session Types</h3>
+                            <select id="sessionTypeTimeframe">
+                                <option value="week">This Week</option>
+                                <option value="month">This Month</option>
+                                <option value="all">All Time</option>
+                            </select>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="sessionTypesChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Progress Over Time -->
+                    <div class="chart-card full-width">
+                        <div class="chart-header">
+                            <h3>Progress Over Time</h3>
+                            <div class="chart-controls">
+                                <button class="chart-btn active" data-period="7">7D</button>
+                                <button class="chart-btn" data-period="30">30D</button>
+                                <button class="chart-btn" data-period="90">90D</button>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="progressChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Air Quality Correlation -->
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Air Quality Impact</h3>
+                            <div class="chart-info">
+                                <i class="fas fa-info-circle" title="Shows how air quality affects your breathing sessions"></i>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="airQualityChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Activity -->
+            <section class="activity-section">
+                <div class="activity-header">
+                    <h3>Recent Activity</h3>
+                    <button class="view-all-btn">View All</button>
+                </div>
+                <div class="activity-list" id="recentActivityList">
+                    <!-- Activities will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Environmental Insights -->
+            <section class="insights-section">
+                <div class="insights-header">
+                    <h3>Environmental Insights</h3>
+                    <div class="insights-period">
+                        <select id="insightsPeriod">
+                            <option value="today">Today</option>
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="insights-grid">
+                    <div class="insight-card">
+                        <div class="insight-icon">🌱</div>
+                        <div class="insight-content">
+                            <h4>Best Air Quality</h4>
+                            <p id="bestAirQuality">Calculating...</p>
+                        </div>
+                    </div>
+                    <div class="insight-card">
+                        <div class="insight-icon">🌤️</div>
+                        <div class="insight-content">
+                            <h4>Optimal Weather</h4>
+                            <p id="optimalWeather">Analyzing...</p>
+                        </div>
+                    </div>
+                    <div class="insight-card">
+                        <div class="insight-content">
+                            <h4>Recommendation</h4>
+                            <p id="environmentalRecommendation">Loading insights...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Goals Section -->
+            <section class="goals-section">
+                <div class="goals-header">
+                    <h3>Wellness Goals</h3>
+                    <button class="btn-secondary" id="editGoalsBtn">
+                        <i class="fas fa-edit"></i>
+                        Edit Goals
+                    </button>
+                </div>
+                <div class="goals-list">
+                    <div class="goal-item">
+                        <div class="goal-info">
+                            <h4>Daily Sessions</h4>
+                            <p>Complete at least 3 breathing sessions</p>
+                        </div>
+                        <div class="goal-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="dailySessionsProgress"></div>
+                            </div>
+                            <span class="progress-text" id="dailySessionsText">0/3</span>
+                        </div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-info">
+                            <h4>Weekly Minutes</h4>
+                            <p>Practice for 150 minutes this week</p>
+                        </div>
+                        <div class="goal-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="weeklyMinutesProgress"></div>
+                            </div>
+                            <span class="progress-text" id="weeklyMinutesText">0/150</span>
+                        </div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-info">
+                            <h4>Streak Maintenance</h4>
+                            <p>Maintain a 7-day practice streak</p>
+                        </div>
+                        <div class="goal-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="streakProgress"></div>
+                            </div>
+                            <span class="progress-text" id="streakText">0/7</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/analytics.js"></script>
+    <script>
+        // Dashboard specific functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDashboardData();
+            setupEventListeners();
+        });
+
+        function loadDashboardData() {
+            // Load session data from localStorage (will be replaced with Firebase)
+            const sessions = JSON.parse(localStorage.getItem('breathingSessions') || '[]');
+            const totalSessions = sessions.length;
+            const totalTime = sessions.reduce((sum, session) => sum + (session.duration || 0), 0);
+            const streak = calculateStreak(sessions);
+            
+            // Update metrics
+            document.getElementById('totalTimeMetric').textContent = Math.round(totalTime / 60);
+            document.getElementById('sessionsMetric').textContent = totalSessions;
+            document.getElementById('streakMetric').textContent = streak;
+            
+            // Load charts
+            loadSessionTypesChart(sessions);
+            loadProgressChart(sessions);
+            loadAirQualityChart(sessions);
+            
+            // Load recent activity
+            loadRecentActivity(sessions);
+            
+            // Update goals
+            updateGoalProgress(sessions);
+        }
+
+        function setupEventListeners() {
+            document.getElementById('newSessionBtn').addEventListener('click', function() {
+                window.location.href = 'index.html';
+            });
+
+            document.getElementById('exportBtn').addEventListener('click', exportData);
+            
+            // Chart timeframe controls
+            document.querySelectorAll('.chart-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.chart-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    const period = this.dataset.period;
+                    updateProgressChart(period);
+                });
+            });
+        }
+
+        function calculateStreak(sessions) {
+            if (sessions.length === 0) return 0;
+            
+            const today = new Date();
+            let streak = 0;
+            let currentDate = new Date(today);
+            
+            while (true) {
+                const dateStr = currentDate.toDateString();
+                const hasSession = sessions.some(session => 
+                    new Date(session.date).toDateString() === dateStr
+                );
+                
+                if (hasSession) {
+                    streak++;
+                    currentDate.setDate(currentDate.getDate() - 1);
+                } else {
+                    break;
+                }
+            }
+            
+            return streak;
+        }
+
+        function loadSessionTypesChart(sessions) {
+            const ctx = document.getElementById('sessionTypesChart').getContext('2d');
+            const sessionTypes = sessions.reduce((acc, session) => {
+                acc[session.type] = (acc[session.type] || 0) + 1;
+                return acc;
+            }, {});
+
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(sessionTypes),
+                    datasets: [{
+                        data: Object.values(sessionTypes),
+                        backgroundColor: [
+                            '#a0c4ff',
+                            '#ffadad',
+                            '#caffbf',
+                            '#ffd6a5'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+
+        function loadProgressChart(sessions) {
+            const ctx = document.getElementById('progressChart').getContext('2d');
+            
+            // Group sessions by date
+            const dailyData = sessions.reduce((acc, session) => {
+                const date = new Date(session.date).toDateString();
+                if (!acc[date]) {
+                    acc[date] = { sessions: 0, duration: 0 };
+                }
+                acc[date].sessions++;
+                acc[date].duration += session.duration || 0;
+                return acc;
+            }, {});
+
+            const dates = Object.keys(dailyData).slice(-30);
+            const sessionCounts = dates.map(date => dailyData[date].sessions);
+            const durations = dates.map(date => Math.round(dailyData[date].duration / 60));
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: dates.map(date => new Date(date).toLocaleDateString()),
+                    datasets: [{
+                        label: 'Sessions',
+                        data: sessionCounts,
+                        borderColor: '#a0c4ff',
+                        backgroundColor: 'rgba(160, 196, 255, 0.1)',
+                        yAxisID: 'y'
+                    }, {
+                        label: 'Duration (min)',
+                        data: durations,
+                        borderColor: '#ffadad',
+                        backgroundColor: 'rgba(255, 173, 173, 0.1)',
+                        yAxisID: 'y1'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            grid: {
+                                drawOnChartArea: false,
+                            },
+                        }
+                    }
+                }
+            });
+        }
+
+        function loadAirQualityChart(sessions) {
+            const ctx = document.getElementById('airQualityChart').getContext('2d');
+            
+            // Mock AQI data (will be replaced with real data from Firebase)
+            const aqiData = sessions.map((session, index) => ({
+                aqi: Math.floor(Math.random() * 150) + 50,
+                duration: session.duration || 0
+            }));
+
+            new Chart(ctx, {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        label: 'Session Duration vs AQI',
+                        data: aqiData.map(d => ({ x: d.aqi, y: d.duration })),
+                        backgroundColor: '#caffbf'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Air Quality Index'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Session Duration (seconds)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function loadRecentActivity(sessions) {
+            const recentSessions = sessions.slice(-5).reverse();
+            const activityList = document.getElementById('recentActivityList');
+            
+            if (recentSessions.length === 0) {
+                activityList.innerHTML = '<div class="no-activity">No recent sessions. Start your first breathing session!</div>';
+                return;
+            }
+
+            activityList.innerHTML = recentSessions.map(session => `
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        ${getSessionIcon(session.type)}
+                    </div>
+                    <div class="activity-content">
+                        <div class="activity-title">${getSessionName(session.type)} Session</div>
+                        <div class="activity-details">
+                            ${Math.round((session.duration || 0) / 60)} minutes • 
+                            ${new Date(session.date).toLocaleDateString()}
+                        </div>
+                    </div>
+                    <div class="activity-status completed">
+                        <i class="fas fa-check"></i>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function updateGoalProgress(sessions) {
+            const today = new Date().toDateString();
+            const todaySessions = sessions.filter(session => 
+                new Date(session.date).toDateString() === today
+            ).length;
+            
+            // Update daily sessions progress
+            const dailyProgress = Math.min(todaySessions / 3 * 100, 100);
+            document.getElementById('dailySessionsProgress').style.width = dailyProgress + '%';
+            document.getElementById('dailySessionsText').textContent = `${todaySessions}/3`;
+            
+            // Calculate weekly minutes
+            const weekStart = new Date();
+            weekStart.setDate(weekStart.getDate() - weekStart.getDay());
+            const weekSessions = sessions.filter(session => 
+                new Date(session.date) >= weekStart
+            );
+            const weeklyMinutes = Math.round(weekSessions.reduce((sum, session) => 
+                sum + (session.duration || 0), 0) / 60);
+            
+            const weeklyProgress = Math.min(weeklyMinutes / 150 * 100, 100);
+            document.getElementById('weeklyMinutesProgress').style.width = weeklyProgress + '%';
+            document.getElementById('weeklyMinutesText').textContent = `${weeklyMinutes}/150`;
+            
+            // Update streak progress
+            const streak = calculateStreak(sessions);
+            const streakProgress = Math.min(streak / 7 * 100, 100);
+            document.getElementById('streakProgress').style.width = streakProgress + '%';
+            document.getElementById('streakText').textContent = `${streak}/7`;
+        }
+
+        function getSessionIcon(type) {
+            const icons = {
+                calm: '🌊',
+                energy: '⚡',
+                focus: '🧘',
+                sleep: '🌙'
+            };
+            return icons[type] || '🧘';
+        }
+
+        function getSessionName(type) {
+            const names = {
+                calm: 'Deep Calm',
+                energy: 'Energizing',
+                focus: 'Focused Mind',
+                sleep: 'Sleep Ready'
+            };
+            return names[type] || 'Breathing';
+        }
+
+        function exportData() {
+            const sessions = JSON.parse(localStorage.getItem('breathingSessions') || '[]');
+            const dataStr = JSON.stringify(sessions, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(dataBlob);
+            link.download = `breathewell-data-${new Date().toISOString().split('T')[0]}.json`;
+            link.click();
+        }
+    </script>
+</body>
+</html>

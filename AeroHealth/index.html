@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura BreatheWell - Wellness & Atmosphere Analysis</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="nav-header">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-wind"></i>
+                <span>Aura BreatheWell</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" data-section="breathing">
+                    <i class="fas fa-lungs"></i>
+                    <span>Breathe</span>
+                </a>
+                <a href="#" class="nav-item" data-section="analytics">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <a href="settings.html" class="nav-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+            <div class="user-actions">
+                <button class="auth-btn" id="authButton">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>Sign In</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Breathing Section -->
+        <section id="breathing-section" class="content-section active">
+            <div class="breathing-container">
+                <!-- Left Panel: Controls & Info -->
+                <div class="control-panel">
+                    <div class="welcome-card">
+                        <h1>Welcome to Wellness</h1>
+                        <p>Breathe better, live healthier with real-time atmosphere analysis</p>
+                    </div>
+
+                    <!-- Air Quality Status -->
+                    <div class="status-card" id="airQualityCard">
+                        <div class="status-header">
+                            <i class="fas fa-leaf"></i>
+                            <h3>Air Quality</h3>
+                        </div>
+                        <div class="status-content">
+                            <div class="aqi-value" id="aqiValue">Detecting...</div>
+                            <div class="aqi-description" id="aqiDescription">Analyzing your environment...</div>
+                            <div class="location-info" id="locationInfo"></div>
+                        </div>
+                    </div>
+
+                    <!-- Weather Info -->
+                    <div class="status-card" id="weatherCard">
+                        <div class="status-header">
+                            <i class="fas fa-cloud-sun"></i>
+                            <h3>Weather</h3>
+                        </div>
+                        <div class="status-content" id="weatherContent">
+                            <div class="weather-info">Loading weather data...</div>
+                        </div>
+                    </div>
+
+                    <!-- Session Selection -->
+                    <div class="session-selector">
+                        <h3>Choose Your Session</h3>
+                        <div class="session-grid">
+                            <button class="session-card active" data-type="calm" data-duration="6">
+                                <div class="session-icon">🌊</div>
+                                <div class="session-info">
+                                    <h4>Deep Calm</h4>
+                                    <p>Relaxation & Stress Relief</p>
+                                    <span class="duration">6s cycle</span>
+                                </div>
+                            </button>
+                            <button class="session-card" data-type="energy" data-duration="4">
+                                <div class="session-icon">⚡</div>
+                                <div class="session-info">
+                                    <h4>Energizing</h4>
+                                    <p>Boost Energy & Focus</p>
+                                    <span class="duration">4s cycle</span>
+                                </div>
+                            </button>
+                            <button class="session-card" data-type="focus" data-duration="8">
+                                <div class="session-icon">🧘</div>
+                                <div class="session-info">
+                                    <h4>Focused Mind</h4>
+                                    <p>Deep Concentration</p>
+                                    <span class="duration">8s cycle</span>
+                                </div>
+                            </button>
+                            <button class="session-card" data-type="sleep" data-duration="10">
+                                <div class="session-icon">🌙</div>
+                                <div class="session-info">
+                                    <h4>Sleep Ready</h4>
+                                    <p>Prepare for Rest</p>
+                                    <span class="duration">10s cycle</span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Session Controls -->
+                    <div class="session-controls">
+                        <button class="control-btn primary" id="startButton">
+                            <i class="fas fa-play"></i>
+                            <span>Start Session</span>
+                        </button>
+                        <button class="control-btn secondary" id="pauseButton" disabled>
+                            <i class="fas fa-pause"></i>
+                            <span>Pause</span>
+                        </button>
+                        <button class="control-btn danger" id="stopButton" disabled>
+                            <i class="fas fa-stop"></i>
+                            <span>Stop</span>
+                        </button>
+                    </div>
+
+                    <!-- Session Timer -->
+                    <div class="timer-display" id="timerDisplay">
+                        <div class="timer-text">Ready to begin</div>
+                        <div class="timer-progress">
+                            <div class="progress-bar" id="progressBar"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Panel: Breathing Visualization -->
+                <div class="breathing-panel">
+                    <div class="breathing-orb-container">
+                        <div class="breathing-orb" id="breathingOrb">
+                            <div class="orb-inner"></div>
+                            <div class="orb-glow"></div>
+                        </div>
+                        <div class="breathing-instruction" id="breathingInstruction">
+                            <div class="instruction-text">Ready to breathe</div>
+                            <div class="instruction-counter" id="instructionCounter"></div>
+                        </div>
+                    </div>
+
+                    <!-- Background Elements -->
+                    <div class="floating-particles">
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics Section -->
+        <section id="analytics-section" class="content-section">
+            <div class="analytics-container">
+                <div class="analytics-header">
+                    <h2>Your Wellness Analytics</h2>
+                    <div class="analytics-controls">
+                        <select id="analyticsTimeframe">
+                            <option value="today">Today</option>
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                            <option value="all">All Time</option>
+                        </select>
+                        <button class="export-btn" id="exportDataButton">
+                            <i class="fas fa-download"></i>
+                            Export Data
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🧘</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="totalSessions">0</div>
+                            <div class="stat-label">Total Sessions</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⏱️</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="totalTime">0m</div>
+                            <div class="stat-label">Total Time</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🔥</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="streakDays">0</div>
+                            <div class="stat-label">Day Streak</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="averageSession">0m</div>
+                            <div class="stat-label">Avg Session</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts -->
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <h3>Session Distribution</h3>
+                        <canvas id="sessionTypeChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Weekly Progress</h3>
+                        <canvas id="weeklyProgressChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Air Quality Correlation</h3>
+                        <canvas id="aqiCorrelationChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Recent Sessions -->
+                <div class="recent-sessions">
+                    <h3>Recent Sessions</h3>
+                    <div class="sessions-list" id="sessionsList">
+                        <!-- Sessions will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <div class="loading-text">Analyzing your environment...</div>
+        </div>
+    </div>
+
+    <!-- Notification System -->
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <!-- Scripts -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/breathing.js"></script>
+    <script src="js/analytics.js"></script>
+    <script src="js/app.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js');
+        }
+    </script>
+    <!-- Firebase Configuration -->
+
+   <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBURFGb9n7QDqY6Xgs-hP2r9xh9_VSFQjU",
+    authDomain: "aura-breathwell.firebaseapp.com",
+    projectId: "aura-breathwell",
+    storageBucket: "aura-breathwell.firebasestorage.app",
+    messagingSenderId: "322315007298",
+    appId: "1:322315007298:web:74c1211b1b4a98675484db"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app); // 👈 Ye Firestore ko enable krta hai
+
+  //  data store 
+  async function saveSessionData(sessionTime, airQuality, emotion, breathingScore) {
+    try {
+      await addDoc(collection(db, "sessions"), {
+        sessionTime,
+        airQuality,
+        emotion,
+        breathingScore,
+        timestamp: new Date()
+      });
+      console.log("Session saved!");
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  }
+
+  //  Example usage 
+  saveSessionData("5 minutes", "Good", "Relaxed", 85);
+</script>
+
+</body>
+</html>

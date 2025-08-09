@@ -1,0 +1,149 @@
+{
+  "name": "Aura BreatheWell",
+  "short_name": "BreatheWell",
+  "description": "Your personal wellness companion for better breathing and environmental awareness",
+  "version": "1.0.0",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#a0c4ff",
+  "background_color": "#ffffff",
+  "categories": ["health", "lifestyle", "wellness", "meditation"],
+  "lang": "en",
+  "dir": "ltr",
+  "scope": "/",
+  
+  "icons": [
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjQiIGN5PSIyNCIgcj0iMjQiIGZpbGw9InVybCgjZ3JhZGllbnQwKSIvPgo8cGF0aCBkPSJNMTYgMjBDMTYgMTYuNjg2MyAxOC42ODYzIDE0IDIyIDE0SDI2QzI5LjMxMzcgMTQgMzIgMTYuNjg2MyAzMiAyMFYyOEMzMiAzMS4zMTM3IDI5LjMxMzcgMzQgMjYgMzRIMjJDMTguNjg2MyAzNCAE2iAzMS4zMTM3IDE2IDI4VjIwWiIgZmlsbD0id2hpdGUiLz4KPHN0eWxlPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJncmFkaWVudDAiIHgxPSIwIiB5MT0iMCIgeDI9IjQ4IiB5Mj0iNDgiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iI2EwYzRmZiIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNiZGIyZmYiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N0eWxlPgo8L3N2Zz4K",
+      "sizes": "48x48",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIHZpZXdCb3g9IjAgMCA3MiA3MiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzYiIGN5PSIzNiIgcj0iMzYiIGZpbGw9InVybCgjZ3JhZGllbnQwKSIvPgo8cGF0aCBkPSJNMjQgMzBDMjQgMjUuMDI5NCAyOC4wMjk0IDIxIDMzIDIxSDM5QzQzLjk3MDYgMjEgNDggMjUuMDI5NCA0OCAzMFY0MkM0OCA0Ni45NzA2IDQzLjk3MDYgNTEgMzkgNTFIMzNDMjguMDI5NCA1MSAyNCA0Ni45NzA2IDI0IDQyVjMwWiIgZmlsbD0id2hpdGUiLz4KPHN0eWxlPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJncmFkaWVudDAiIHgxPSIwIiB5MT0iMCIgeDI9IjcyIiB5Mj0iNzIiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iI2EwYzRmZiIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNiZGIyZmYiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N0eWxlPgo8L3N2Zz4K",
+      "sizes": "72x72",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iNDgiIGN5PSI0OCIgcj0iNDgiIGZpbGw9InVybCgjZ3JhZGllbnQwKSIvPgo8cGF0aCBkPSJNMzIgNDBDMzIgMzMuMzcyNiAzNy4zNzI2IDI4IDQ0IDI4SDUyQzU4LjYyNzQgMjggNjQgMzMuMzcyNiA2NCA0MFY1NkM2NCA2Mi42Mjc0IDU4LjYyNzQgNjggNTIgNjhINDRDMzcuMzcyNiA2OCAzMiA2Mi42Mjc0IDMyIDU2VjQwWiIgZmlsbD0id2hpdGUiLz4KPHN0eWxlPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJncmFkaWVudDAiIHgxPSIwIiB5MT0iMCIgeDI9Ijk2IiB5Mj0iOTYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iI2EwYzRmZiIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNiZGIyZmYiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N0eWxlPgo8L3N2Zz4K",
+      "sizes": "96x96",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQ0IiBoZWlnaHQ9IjE0NCIgdmlld0JveD0iMCAwIDE0NCAxNDQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxjaXJjbGUgY3g9IjcyIiBjeT0iNzIiIHI9IjcyIiBmaWxsPSJ1cmwoI2dyYWRpZW50MCkiLz4KPHBhdGggZD0iTTQ4IDYwQzQ4IDUwLjA1ODkgNTYuMDU4OSA0MiA2NiA0Mkg3OEM4Ny45NDExIDQyIDk2IDUwLjA1ODkgOTYgNjBWODRDOTYgOTMuOTQxMSA4Ny45NDExIDEwMiA3OCAxMDJINjZDNTYuMDU4OSAxMDIgNDggOTMuOTQxMSA0OCA4NFY2MFoiIGZpbGw9IndoaXRlIi8+CjxzdHlsZT4KPGRGZXM+CjxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZGllbnQwIiB4MT0iMCIgeTE9IjAiIHgyPSIxNDQiIHkyPSIxNDQiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iI2EwYzRmZiIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNiZGIyZmYiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N0eWxlPgo8L3N2Zz4K",
+      "sizes": "144x144",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxjaXJjbGUgY3g9Ijk2IiBjeT0iOTYiIHI9Ijk2IiBmaWxsPSJ1cmwoI2dyYWRpZW50MCkiLz4KPHBhdGggZD0iTTY0IDgwQzY0IDY2Ljc0NTIgNzQuNzQ1MiA1NiA4OCA1NkgxMDRDMTE3LjI1NSA1NiAxMjggNjYuNzQ1MiAxMjggODBWMTEyQzEyOCAxMjUuMjU1IDExNy4yNTUgMTM2IDEwNCAxMzZIODhDNzQuNzQ1MiAxMzYgNjQgMTI1LjI1NSA2NCAxMTJWODBaIiBmaWxsPSJ3aGl0ZSIvPgo8c3R5bGU+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50MCIgeDE9IjAiIHkxPSIwIiB4Mj0iMTkyIiB5Mj0iMTkyIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiNhMGM0ZmYiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjYmRiMmZmIi8+CjwvbGluZWFyR3JhZGllbnQ+CjwvZGVmcz4KPC9zdHlsZT4KPC9zdmc+Cg==",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSJ1cmwoI2dyYWRpZW50MCkiLz4KPHBhdGggZD0iTTE3MCAyMTMuMzMzQzE3MCAsMTc4LjU0MSAxOTguNTQxIDE1MCAyMzMuMzMzIDE1MEgyNzguNjY3QzMxMy40NTkgMTUwIDM0MiAxNzguNTQxIDM0MiAyMTMuMzMzVjI5OC42NjdDMzQyIDMzMy40NTkgMzEzLjQ1OSAzNjIgMjc4LjY2NyAzNjJIMjMzLjMzM0MxOTguNTQxIDM2MiAxNzAgMzMzLjQ1OSAxNzAgMjk4LjY2N1YyMTMuMzMzWiIgZmlsbD0id2hpdGUiLz4KPHN0eWxlPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJncmFkaWVudDAiIHgxPSIwIiB5MT0iMCIgeDI9IjUxMiIgeTI9IjUxMiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjYTBjNGZmIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2JkYjJmZiIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+CjwvdHlsZT4KPC9zdmc+Cg==",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjU2OCIgdmlld0JveD0iMCAwIDMyMCA1NjgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iNTY4IiBmaWxsPSJ1cmwoI2dyYWRpZW50MCkiLz4KPGNpcmNsZSBjeD0iMTYwIiBjeT0iMjg0IiByPSI4MCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjgpIi8+Cjx0ZXh0IHg9IjE2MCIgeT0iNDAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5CcmVhdGhlV2VsbDwvdGV4dD4KPHN0eWxlPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJncmFkaWVudDAiIHgxPSIwIiB5MT0iMCIgeDI9IjMyMCIgeTI9IjU2OCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjYTBjNGZmIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2JkYjJmZiIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+CjwvdHlsZT4KPC9zdmc+Cg==",
+      "sizes": "320x568",
+      "type": "image/svg+xml",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAyNCIgaGVpZ2h0PSI3NjgiIHZpZXdCb3g9IjAgMCAxMDI0IDc2OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjEwMjQiIGhlaWdodD0iNzY4IiBmaWxsPSJ1cmwoI2dyYWRpZW50MCkiLz4KPGNpcmNsZSBjeD0iNTEyIiBjeT0iMzg0IiByPSIxMjAiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC44KSIvPgo8dGV4dCB4PSI1MTIiIHk9IjU1MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjM2IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QnJlYXRoZVdlbGwgRGFzaGJvYXJkPC90ZXh0Pgo8c3R5bGU+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50MCIgeDE9IjAiIHkxPSIwIiB4Mj0iMTAyNCIgeTI9Ijc2OCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjYTBjNGZmIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2JkYjJmZiIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+CjwvdHlsZT4KPC9zdmc+Cg==",
+      "sizes": "1024x768",
+      "type": "image/svg+xml",
+      "form_factor": "wide"
+    }
+  ],
+  
+  "shortcuts": [
+    {
+      "name": "Start Breathing Session",
+      "short_name": "Breathe",
+      "description": "Start a new breathing exercise",
+      "url": "/?action=start-session",
+      "icons": [
+        {
+          "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iNDgiIGN5PSI0OCIgcj0iNDgiIGZpbGw9IiNhMGM0ZmYiLz4KPHBhdGggZD0iTTM4IDMyTDU4IDQ4TDM4IDY0VjMyWiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "View Dashboard",
+      "short_name": "Dashboard",
+      "description": "Check your progress and analytics",
+      "url": "/dashboard.html",
+      "icons": [
+        {
+          "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iNDgiIGN5PSI0OCIgcj0iNDgiIGZpbGw9IiNjYWZmYmYiLz4KPHJlY3QgeD0iMjQiIHk9IjI0IiB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHJ4PSI0IiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Profile Settings",
+      "short_name": "Profile",
+      "description": "Manage your profile and preferences",
+      "url": "/profile.html",
+      "icons": [
+        {
+          "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iNDgiIGN5PSI0OCIgcj0iNDgiIGZpbGw9IiNmZmFkYWQiLz4KPGNpcmNsZSBjeD0iNDgiIGN5PSIzNiIgcj0iMTIiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0zMiA2NEMzMiA1Ni4yNjg0IDM4LjI2ODQgNTAgNDYgNTBINTBDNTcuNzMxNiA1MCA2NCA1Ni4yNjg0IDY0IDY0VjY4SDMyVjY0WiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  
+  "related_applications": [],
+  "prefer_related_applications": false,
+  
+  "protocol_handlers": [],
+  
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  
+  "launch_handler": {
+    "client_mode": ["navigate-existing", "navigate-new"]
+  },
+  
+  "file_handlers": [
+    {
+      "action": "/import-data",
+      "accept": {
+        "application/json": [".json"]
+      }
+    }
+  ],
+  
+  "share_target": {
+    "action": "/share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  
+  "permissions_policy": {
+    "geolocation": "*",
+    "notifications": "*",
+    "vibrate": "*"
+  },
+  
+  "handle_links": "preferred"
+}

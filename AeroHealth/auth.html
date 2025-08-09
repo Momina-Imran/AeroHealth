@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Aura BreatheWell</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/auth.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <!-- Background -->
+        <div class="auth-background">
+            <div class="floating-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+        </div>
+
+        <!-- Auth Form -->
+        <div class="auth-form-container">
+            <div class="auth-form">
+                <!-- Logo -->
+                <div class="auth-logo">
+                    <i class="fas fa-wind"></i>
+                    <h1>Aura BreatheWell</h1>
+                    <p>Your personal wellness companion</p>
+                </div>
+
+                <!-- Sign In Form -->
+                <form id="signInForm" class="auth-form-content">
+                    <h2>Welcome Back</h2>
+                    <p class="auth-subtitle">Sign in to continue your wellness journey</p>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="email" name="email" required placeholder="Enter your email">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="password" name="password" required placeholder="Enter your password">
+                            <button type="button" class="toggle-password" onclick="togglePassword()">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="checkbox-wrapper">
+                            <input type="checkbox" id="rememberMe">
+                            <span class="checkmark"></span>
+                            Remember me
+                        </label>
+                        <a href="#" class="forgot-password" onclick="showForgotPassword()">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="auth-btn primary" id="signInBtn">
+                        <span>Sign In</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+
+                    <div class="auth-divider">
+                        <span>or continue with</span>
+                    </div>
+
+                    <div class="social-auth">
+                        <button type="button" class="social-btn google" onclick="signInWithGoogle()">
+                            <i class="fab fa-google"></i>
+                            <span>Google</span>
+                        </button>
+                        <button type="button" class="social-btn apple" onclick="signInWithApple()">
+                            <i class="fab fa-apple"></i>
+                            <span>Apple</span>
+                        </button>
+                    </div>
+
+                    <div class="auth-switch">
+                        <p>Don't have an account? <a href="#" onclick="showSignUp()">Sign up</a></p>
+                    </div>
+                </form>
+
+                <!-- Sign Up Form -->
+                <form id="signUpForm" class="auth-form-content hidden">
+                    <h2>Create Account</h2>
+                    <p class="auth-subtitle">Start your wellness journey today</p>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="firstName" name="firstName" required placeholder="First name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="lastName" name="lastName" required placeholder="Last name">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signUpEmail">Email Address</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="signUpEmail" name="email" required placeholder="Enter your email">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signUpPassword">Password</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="signUpPassword" name="password" required placeholder="Create password">
+                            <button type="button" class="toggle-password" onclick="togglePassword('signUpPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="password-strength" id="passwordStrength">
+                            <div class="strength-bar">
+                                <div class="strength-fill"></div>
+                            </div>
+                            <span class="strength-text">Enter a password</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm password">
+                        </div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="checkbox-wrapper">
+                            <input type="checkbox" id="agreeTerms" required>
+                            <span class="checkmark"></span>
+                            I agree to the <a href="#" target="_blank">Terms of Service</a> and <a href="#" target="_blank">Privacy Policy</a>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="auth-btn primary" id="signUpBtn">
+                        <span>Create Account</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+
+                    <div class="auth-switch">
+                        <p>Already have an account? <a href="#" onclick="showSignIn()">Sign in</a></p>
+                    </div>
+                </form>
+
+                <!-- Forgot Password Form -->
+                <form id="forgotPasswordForm" class="auth-form-content hidden">
+                    <h2>Reset Password</h2>
+                    <p class="auth-subtitle">Enter your email to receive reset instructions</p>
+
+                    <div class="form-group">
+                        <label for="resetEmail">Email Address</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="resetEmail" name="email" required placeholder="Enter your email">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="auth-btn primary" id="resetBtn">
+                        <span>Send Reset Link</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+
+                    <div class="auth-switch">
+                        <p><a href="#" onclick="showSignIn()">← Back to Sign In</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Continue as Guest -->
+        <div class="guest-option">
+            <button class="guest-btn" onclick="continueAsGuest()">
+                <i class="fas fa-user-clock"></i>
+                <span>Continue as Guest</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay hidden" id="authLoadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <div class="loading-text">Authenticating...</div>
+        </div>
+    </div>
+
+    <!-- Notification Container -->
+    <div class="notification-container" id="authNotificationContainer"></div>
+
+    <!-- Scripts -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        // Form switching functions
+        function showSignIn() {
+            document.getElementById('signInForm').classList.remove('hidden');
+            document.getElementById('signUpForm').classList.add('hidden');
+            document.getElementById('forgotPasswordForm').classList.add('hidden');
+        }
+
+        function showSignUp() {
+            document.getElementById('signInForm').classList.add('hidden');
+            document.getElementById('signUpForm').classList.remove('hidden');
+            document.getElementById('forgotPasswordForm').classList.add('hidden');
+        }
+
+        function showForgotPassword() {
+            document.getElementById('signInForm').classList.add('hidden');
+            document.getElementById('signUpForm').classList.add('hidden');
+            document.getElementById('forgotPasswordForm').classList.remove('hidden');
+        }
+
+        function togglePassword(inputId = 'password') {
+            const input = document.getElementById(inputId);
+            const icon = input.parentElement.querySelector('.toggle-password i');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        function continueAsGuest() {
+            // Set guest mode in localStorage
+            localStorage.setItem('userMode', 'guest');
+            window.location.href = 'index.html';
+        }
+
+        // Password strength checker
+        document.getElementById('signUpPassword')?.addEventListener('input', function() {
+            const password = this.value;
+            const strengthElement = document.getElementById('passwordStrength');
+            const strengthBar = strengthElement.querySelector('.strength-fill');
+            const strengthText = strengthElement.querySelector('.strength-text');
+            
+            let strength = 0;
+            let text = 'Weak';
+            let color = '#ff4757';
+            
+            if (password.length >= 8) strength++;
+            if (/[A-Z]/.test(password)) strength++;
+            if (/[a-z]/.test(password)) strength++;
+            if (/[0-9]/.test(password)) strength++;
+            if (/[^A-Za-z0-9]/.test(password)) strength++;
+            
+            if (strength >= 4) {
+                text = 'Strong';
+                color = '#2ed573';
+            } else if (strength >= 3) {
+                text = 'Good';
+                color = '#ffa502';
+            } else if (strength >= 2) {
+                text = 'Fair';
+                color = '#ff6348';
+            }
+            
+            strengthBar.style.width = (strength * 20) + '%';
+            strengthBar.style.backgroundColor = color;
+            strengthText.textContent = text;
+        });
+
+        // Form submissions
+        document.getElementById('signInForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            try {
+                showLoading(true);
+                // Firebase auth will be implemented here
+                console.log('Sign in attempt:', email);
+                // For now, simulate success
+                setTimeout(() => {
+                    showLoading(false);
+                    showNotification('Sign in successful!', 'success');
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1000);
+                }, 2000);
+            } catch (error) {
+                showLoading(false);
+                showNotification('Sign in failed: ' + error.message, 'error');
+            }
+        });
+
+        document.getElementById('signUpForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const password = document.getElementById('signUpPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                showNotification('Passwords do not match', 'error');
+                return;
+            }
+            
+            try {
+                showLoading(true);
+                // Firebase auth will be implemented here
+                console.log('Sign up attempt');
+                // For now, simulate success
+                setTimeout(() => {
+                    showLoading(false);
+                    showNotification('Account created successfully!', 'success');
+                    setTimeout(() => {
+                        window.location.href = 'onboarding.html';
+                    }, 1000);
+                }, 2000);
+            } catch (error) {
+                showLoading(false);
+                showNotification('Sign up failed: ' + error.message, 'error');
+            }
+        });
+
+        document.getElementById('forgotPasswordForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const email = document.getElementById('resetEmail').value;
+            
+            try {
+                showLoading(true);
+                // Firebase auth will be implemented here
+                console.log('Password reset for:', email);
+                setTimeout(() => {
+                    showLoading(false);
+                    showNotification('Password reset email sent!', 'success');
+                    setTimeout(() => {
+                        showSignIn();
+                    }, 2000);
+                }, 1500);
+            } catch (error) {
+                showLoading(false);
+                showNotification('Reset failed: ' + error.message, 'error');
+            }
+        });
+
+        function showLoading(show) {
+            const overlay = document.getElementById('authLoadingOverlay');
+            if (show) {
+                overlay.classList.remove('hidden');
+            } else {
+                overlay.classList.add('hidden');
+            }
+        }
+
+        function showNotification(message, type = 'info') {
+            const container = document.getElementById('authNotificationContainer');
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+                    <span>${message}</span>
+                </div>
+                <button class="notification-close" onclick="this.parentElement.remove()">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            
+            container.appendChild(notification);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 5000);
+        }
+
+        // Social auth functions (prepared for Firebase)
+        function signInWithGoogle() {
+            console.log('Google sign in (Firebase implementation pending)');
+            showNotification('Google sign in will be available soon', 'info');
+        }
+
+        function signInWithApple() {
+            console.log('Apple sign in (Firebase implementation pending)');
+            showNotification('Apple sign in will be available soon', 'info');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Aura BreatheWell</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="onboarding-page">
+    <div class="onboarding-container">
+        <!-- Progress Indicator -->
+        <div class="progress-indicator">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text">
+                <span id="currentStep">1</span> of <span id="totalSteps">5</span>
+            </div>
+        </div>
+
+        <!-- Step 1: Welcome -->
+        <div class="onboarding-step active" id="step1">
+            <div class="step-content">
+                <div class="step-icon">
+                    <i class="fas fa-wind"></i>
+                </div>
+                <h1>Welcome to Aura BreatheWell</h1>
+                <p class="step-subtitle">Your personal wellness companion for better breathing and environmental awareness</p>
+                
+                <div class="feature-highlights">
+                    <div class="feature">
+                        <i class="fas fa-lungs"></i>
+                        <h3>Guided Breathing</h3>
+                        <p>Multiple breathing techniques for different wellness goals</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-leaf"></i>
+                        <h3>Environmental Insights</h3>
+                        <p>Real-time air quality and weather-based recommendations</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Progress Tracking</h3>
+                        <p>Detailed analytics and insights into your wellness journey</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2: Goals -->
+        <div class="onboarding-step" id="step2">
+            <div class="step-content">
+                <div class="step-icon">
+                    <i class="fas fa-target"></i>
+                </div>
+                <h1>What are your wellness goals?</h1>
+                <p class="step-subtitle">Select your primary objectives to personalize your experience</p>
+                
+                <div class="goals-grid">
+                    <button class="goal-card" onclick="toggleGoal(this, 'stress')">
+                        <i class="fas fa-spa"></i>
+                        <h3>Reduce Stress</h3>
+                        <p>Find calm and relaxation</p>
+                    </button>
+                    <button class="goal-card" onclick="toggleGoal(this, 'energy')">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Boost Energy</h3>
+                        <p>Increase vitality and alertness</p>
+                    </button>
+                    <button class="goal-card" onclick="toggleGoal(this, 'focus')">
+                        <i class="fas fa-bullseye"></i>
+                        <h3>Improve Focus</h3>
+                        <p>Enhance concentration and clarity</p>
+                    </button>
+                    <button class="goal-card" onclick="toggleGoal(this, 'sleep')">
+                        <i class="fas fa-moon"></i>
+                        <h3>Better Sleep</h3>
+                        <p>Prepare for restful nights</p>
+                    </button>
+                    <button class="goal-card" onclick="toggleGoal(this, 'health')">
+                        <i class="fas fa-heart"></i>
+                        <h3>General Health</h3>
+                        <p>Overall wellness improvement</p>
+                    </button>
+                    <button class="goal-card" onclick="toggleGoal(this, 'anxiety')">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Manage Anxiety</h3>
+                        <p>Cope with anxious feelings</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Experience Level -->
+        <div class="onboarding-step" id="step3">
+            <div class="step-content">
+                <div class="step-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h1>What's your experience level?</h1>
+                <p class="step-subtitle">This helps us recommend the right sessions for you</p>
+                
+                <div class="experience-options">
+                    <button class="experience-card" onclick="setExperience(this, 'beginner')">
+                        <i class="fas fa-seedling"></i>
+                        <h3>Beginner</h3>
+                        <p>New to breathing exercises</p>
+                        <div class="recommended-badge">Recommended start</div>
+                    </button>
+                    <button class="experience-card" onclick="setExperience(this, 'intermediate')">
+                        <i class="fas fa-tree"></i>
+                        <h3>Intermediate</h3>
+                        <p>Some experience with mindfulness</p>
+                    </button>
+                    <button class="experience-card" onclick="setExperience(this, 'advanced')">
+                        <i class="fas fa-mountain"></i>
+                        <h3>Advanced</h3>
+                        <p>Regular meditation or breathing practice</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 4: Preferences -->
+        <div class="onboarding-step" id="step4">
+            <div class="step-content">
+                <div class="step-icon">
+                    <i class="fas fa-sliders-h"></i>
+                </div>
+                <h1>Customize your experience</h1>
+                <p class="step-subtitle">Set your preferences for the best experience</p>
+                
+                <div class="preferences-form">
+                    <div class="preference-group">
+                        <label>Daily Practice Goal</label>
+                        <div class="practice-options">
+                            <button class="practice-option" onclick="setPracticeGoal(this, 5)">5 min/day</button>
+                            <button class="practice-option selected" onclick="setPracticeGoal(this, 10)">10 min/day</button>
+                            <button class="practice-option" onclick="setPracticeGoal(this, 15)">15 min/day</button>
+                            <button class="practice-option" onclick="setPracticeGoal(this, 20)">20 min/day</button>
+                        </div>
+                    </div>
+
+                    <div class="preference-group">
+                        <label>Preferred Practice Time</label>
+                        <div class="time-options">
+                            <button class="time-option" onclick="setPracticeTime(this, 'morning')">
+                                <i class="fas fa-sun"></i>
+                                Morning
+                            </button>
+                            <button class="time-option" onclick="setPracticeTime(this, 'afternoon')">
+                                <i class="fas fa-cloud-sun"></i>
+                                Afternoon
+                            </button>
+                            <button class="time-option" onclick="setPracticeTime(this, 'evening')">
+                                <i class="fas fa-moon"></i>
+                                Evening
+                            </button>
+                            <button class="time-option" onclick="setPracticeTime(this, 'flexible')">
+                                <i class="fas fa-clock"></i>
+                                Flexible
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="preference-group">
+                        <div class="preference-item">
+                            <label for="notifications">Daily Reminders</label>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="notifications" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="preference-item">
+                            <label for="sounds">Breathing Sounds</label>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="sounds" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="preference-item">
+                            <label for="location">Location for Air Quality</label>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="location" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 5: Ready to Start -->
+        <div class="onboarding-step" id="step5">
+            <div class="step-content">
+                <div class="step-icon celebration">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h1>You're all set!</h1>
+                <p class="step-subtitle">Your personalized wellness journey is ready to begin</p>
+                
+                <div class="setup-summary">
+                    <h3>Your Setup Summary:</h3>
+                    <div class="summary-items">
+                        <div class="summary-item">
+                            <i class="fas fa-target"></i>
+                            <span>Goals: <span id="selectedGoals">Stress Relief, Focus</span></span>
+                        </div>
+                        <div class="summary-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Level: <span id="selectedLevel">Beginner</span></span>
+                        </div>
+                        <div class="summary-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Daily Goal: <span id="selectedGoal">10 minutes</span></span>
+                        </div>
+                        <div class="summary-item">
+                            <i class="fas fa-sun"></i>
+                            <span>Best Time: <span id="selectedTime">Morning</span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="first-session-preview">
+                    <h3>Your First Session Recommendation:</h3>
+                    <div class="session-preview">
+                        <div class="session-icon">🌊</div>
+                        <div class="session-info">
+                            <h4>Deep Calm Breathing</h4>
+                            <p>A gentle 5-minute session perfect for beginners</p>
+                            <span class="session-duration">5 minutes • Beginner Friendly</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="onboarding-navigation">
+            <button class="nav-btn secondary" id="backBtn" onclick="previousStep()" disabled>
+                <i class="fas fa-arrow-left"></i>
+                Back
+            </button>
+            <button class="nav-btn primary" id="nextBtn" onclick="nextStep()">
+                Next
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+
+        <!-- Skip Option -->
+        <div class="skip-option">
+            <button class="skip-btn" onclick="skipOnboarding()">
+                Skip setup and explore
+            </button>
+        </div>
+    </div>
+
+    <!-- Background Animation -->
+    <div class="onboarding-background">
+        <div class="floating-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 5;
+        let onboardingData = {
+            goals: [],
+            experience: '',
+            practiceGoal: 10,
+            practiceTime: '',
+            notifications: true,
+            sounds: true,
+            location: true
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProgress();
+        });
+
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                // Validate current step
+                if (validateStep(currentStep)) {
+                    document.getElementById(`step${currentStep}`).classList.remove('active');
+                    currentStep++;
+                    document.getElementById(`step${currentStep}`).classList.add('active');
+                    updateProgress();
+                    updateNavigation();
+                    
+                    // Update final step summary
+                    if (currentStep === 5) {
+                        updateSummary();
+                    }
+                }
+            } else {
+                completeOnboarding();
+            }
+        }
+
+        function previousStep() {
+            if (currentStep > 1) {
+                document.getElementById(`step${currentStep}`).classList.remove('active');
+                currentStep--;
+                document.getElementById(`step${currentStep}`).classList.add('active');
+                updateProgress();
+                updateNavigation();
+            }
+        }
+
+        function updateProgress() {
+            const progress = (currentStep / totalSteps) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('currentStep').textContent = currentStep;
+            document.getElementById('totalSteps').textContent = totalSteps;
+        }
+
+        function updateNavigation() {
+            const backBtn = document.getElementById('backBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            backBtn.disabled = currentStep === 1;
+            
+            if (currentStep === totalSteps) {
+                nextBtn.innerHTML = 'Start My Journey <i class="fas fa-rocket"></i>';
+            } else {
+                nextBtn.innerHTML = 'Next <i class="fas fa-arrow-right"></i>';
+            }
+        }
+
+        function validateStep(step) {
+            switch(step) {
+                case 2:
+                    if (onboardingData.goals.length === 0) {
+                        showStepError('Please select at least one wellness goal');
+                        return false;
+                    }
+                    break;
+                case 3:
+                    if (!onboardingData.experience) {
+                        showStepError('Please select your experience level');
+                        return false;
+                    }
+                    break;
+                case 4:
+                    if (!onboardingData.practiceTime) {
+                        showStepError('Please select your preferred practice time');
+                        return false;
+                    }
+                    break;
+            }
+            return true;
+        }
+
+        function showStepError(message) {
+            // Simple error notification
+            const error = document.createElement('div');
+            error.className = 'step-error';
+            error.style.cssText = `
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: #ff4757;
+                color: white;
+                padding: 15px 20px;
+                border-radius: 8px;
+                z-index: 1000;
+            `;
+            error.textContent = message;
+            
+            document.body.appendChild(error);
+            
+            setTimeout(() => {
+                error.remove();
+            }, 3000);
+        }
+
+        function toggleGoal(element, goalType) {
+            element.classList.toggle('selected');
+            
+            if (element.classList.contains('selected')) {
+                onboardingData.goals.push(goalType);
+            } else {
+                const index = onboardingData.goals.indexOf(goalType);
+                if (index > -1) {
+                    onboardingData.goals.splice(index, 1);
+                }
+            }
+        }
+
+        function setExperience(element, level) {
+            document.querySelectorAll('.experience-card').forEach(card => 
+                card.classList.remove('selected')
+            );
+            element.classList.add('selected');
+            onboardingData.experience = level;
+        }
+
+        function setPracticeGoal(element, minutes) {
+            document.querySelectorAll('.practice-option').forEach(option => 
+                option.classList.remove('selected')
+            );
+            element.classList.add('selected');
+            onboardingData.practiceGoal = minutes;
+        }
+
+        function setPracticeTime(element, time) {
+            document.querySelectorAll('.time-option').forEach(option => 
+                option.classList.remove('selected')
+            );
+            element.classList.add('selected');
+            onboardingData.practiceTime = time;
+        }
+
+        function updateSummary() {
+            const goalNames = {
+                stress: 'Stress Relief',
+                energy: 'Energy Boost',
+                focus: 'Focus',
+                sleep: 'Better Sleep',
+                health: 'General Health',
+                anxiety: 'Anxiety Management'
+            };
+            
+            const timeNames = {
+                morning: 'Morning',
+                afternoon: 'Afternoon',
+                evening: 'Evening',
+                flexible: 'Flexible'
+            };
+            
+            document.getElementById('selectedGoals').textContent = 
+                onboardingData.goals.map(goal => goalNames[goal]).join(', ');
+            document.getElementById('selectedLevel').textContent = 
+                onboardingData.experience.charAt(0).toUpperCase() + onboardingData.experience.slice(1);
+            document.getElementById('selectedGoal').textContent = 
+                onboardingData.practiceGoal + ' minutes';
+            document.getElementById('selectedTime').textContent = 
+                timeNames[onboardingData.practiceTime];
+        }
+
+        function completeOnboarding() {
+            // Collect final preferences
+            onboardingData.notifications = document.getElementById('notifications').checked;
+            onboardingData.sounds = document.getElementById('sounds').checked;
+            onboardingData.location = document.getElementById('location').checked;
+            
+            // Save onboarding data
+            localStorage.setItem('onboardingData', JSON.stringify(onboardingData));
+            localStorage.setItem('onboardingCompleted', 'true');
+            
+            // Initialize user profile
+            const userProfile = {
+                name: 'Wellness User',
+                goals: onboardingData.goals,
+                experience: onboardingData.experience,
+                practiceGoal: onboardingData.practiceGoal,
+                practiceTime: onboardingData.practiceTime,
+                joinDate: new Date().toISOString()
+            };
+            
+            localStorage.setItem('userProfile', JSON.stringify(userProfile));
+            
+            // Initialize app settings
+            const appSettings = {
+                notifications: onboardingData.notifications,
+                sounds: onboardingData.sounds,
+                location: onboardingData.location,
+                theme: 'auto',
+                language: 'en'
+            };
+            
+            localStorage.setItem('appSettings', JSON.stringify(appSettings));
+            
+            // Request permissions if needed
+            if (onboardingData.notifications && 'Notification' in window) {
+                Notification.requestPermission();
+            }
+            
+            if (onboardingData.location) {
+                navigator.geolocation.getCurrentPosition(() => {}, () => {});
+            }
+            
+            // Navigate to main app
+            setTimeout(() => {
+                window.location.href = 'index.html?welcome=true';
+            }, 1000);
+        }
+
+        function skipOnboarding() {
+            localStorage.setItem('onboardingCompleted', 'true');
+            window.location.href = 'index.html';
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                nextStep();
+            } else if (e.key === 'Escape') {
+                skipOnboarding();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Aura BreatheWell</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="settings-page">
+    <header class="nav-header">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-wind"></i>
+                <span>Aura BreatheWell</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-item">
+                    <i class="fas fa-lungs"></i>
+                    <span>Breathe</span>
+                </a>
+                <a href="dashboard.html" class="nav-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <a href="#" class="nav-item active">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="settings-main">
+        <div class="settings-container">
+            <div class="settings-header">
+                <h1>Settings</h1>
+                <p>Customize your wellness experience</p>
+            </div>
+
+            <div class="settings-content">
+                <!-- General Settings -->
+                <section class="settings-section">
+                    <h2>General</h2>
+                    <div class="settings-group">
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="theme">Theme</label>
+                                <p>Choose your preferred app theme</p>
+                            </div>
+                            <div class="setting-control">
+                                <select id="theme" onchange="changeTheme(this.value)">
+                                    <option value="auto">Auto</option>
+                                    <option value="light">Light</option>
+                                    <option value="dark">Dark</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="language">Language</label>
+                                <p>Select your preferred language</p>
+                            </div>
+                            <div class="setting-control">
+                                <select id="language" onchange="changeLanguage(this.value)">
+                                    <option value="en">English</option>
+                                    <option value="es">Español</option>
+                                    <option value="fr">Français</option>
+                                    <option value="de">Deutsch</option>
+                                    <option value="zh">中文</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="autoStart">Auto-start Sessions</label>
+                                <p>Automatically start breathing when opening the app</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="autoStart" onchange="toggleSetting('autoStart', this.checked)">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Breathing Settings -->
+                <section class="settings-section">
+                    <h2>Breathing Sessions</h2>
+                    <div class="settings-group">
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="defaultSession">Default Session Type</label>
+                                <p>Your preferred session type when starting</p>
+                            </div>
+                            <div class="setting-control">
+                                <select id="defaultSession" onchange="setDefaultSession(this.value)">
+                                    <option value="calm">Deep Calm</option>
+                                    <option value="energy">Energizing</option>
+                                    <option value="focus">Focused Mind</option>
+                                    <option value="sleep">Sleep Ready</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="sessionLength">Default Session Length</label>
+                                <p>Preferred duration for breathing sessions</p>
+                            </div>
+                            <div class="setting-control">
+                                <select id="sessionLength" onchange="setSessionLength(this.value)">
+                                    <option value="60">1 minute</option>
+                                    <option value="180">3 minutes</option>
+                                    <option value="300">5 minutes</option>
+                                    <option value="600">10 minutes</option>
+                                    <option value="900">15 minutes</option>
+                                    <option value="1800">30 minutes</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="breathingSound">Breathing Sounds</label>
+                                <p>Enable audio cues during breathing exercises</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="breathingSound" onchange="toggleSetting('breathingSound', this.checked)">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="hapticFeedback">Haptic Feedback</label>
+                                <p>Vibration guidance for breathing rhythm</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="hapticFeedback" onchange="toggleSetting('hapticFeedback', this.checked)">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Notifications -->
+                <section class="settings-section">
+                    <h2>Notifications</h2>
+                    <div class="settings-group">
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="dailyReminder">Daily Reminders</label>
+                                <p>Get reminded to practice breathing daily</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="dailyReminder" onchange="toggleNotification('dailyReminder', this.checked)">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item" id="reminderTimeContainer">
+                            <div class="setting-info">
+                                <label for="reminderTime">Reminder Time</label>
+                                <p>When to send daily reminders</p>
+                            </div>
+                            <div class="setting-control">
+                                <input type="time" id="reminderTime" value="09:00" onchange="setReminderTime(this.value)">
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="achievementNotifications">Achievement Notifications</label>
+                                <p>Get notified when you earn new achievements</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="achievementNotifications" onchange="toggleNotification('achievementNotifications', this.checked)">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="weatherAlerts">Weather & Air Quality Alerts</label>
+                                <p>Notifications about environmental conditions</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="weatherAlerts" onchange="toggleNotification('weatherAlerts', this.checked)">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Privacy & Data -->
+                <section class="settings-section">
+                    <h2>Privacy & Data</h2>
+                    <div class="settings-group">
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="dataCollection">Anonymous Usage Data</label>
+                                <p>Help improve the app by sharing anonymous usage data</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="dataCollection" onchange="toggleSetting('dataCollection', this.checked)">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="locationAccess">Location Access</label>
+                                <p>Allow access to location for weather and air quality data</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="locationAccess" onchange="toggleLocationAccess(this.checked)">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label>Data Export</label>
+                                <p>Download all your personal data</p>
+                            </div>
+                            <div class="setting-control">
+                                <button class="btn-secondary" onclick="exportAllData()">
+                                    <i class="fas fa-download"></i>
+                                    Export Data
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label>Clear All Data</label>
+                                <p>Permanently delete all your local data</p>
+                            </div>
+                            <div class="setting-control">
+                                <button class="btn-danger" onclick="confirmClearData()">
+                                    <i class="fas fa-trash"></i>
+                                    Clear Data
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Advanced -->
+                <section class="settings-section">
+                    <h2>Advanced</h2>
+                    <div class="settings-group">
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="debugMode">Debug Mode</label>
+                                <p>Enable debugging features for troubleshooting</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="debugMode" onchange="toggleSetting('debugMode', this.checked)">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label for="offlineMode">Offline Mode</label>
+                                <p>Enable offline functionality when internet is unavailable</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="offlineMode" onchange="toggleSetting('offlineMode', this.checked)">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label>Reset to Defaults</label>
+                                <p>Reset all settings to their default values</p>
+                            </div>
+                            <div class="setting-control">
+                                <button class="btn-warning" onclick="resetToDefaults()">
+                                    <i class="fas fa-undo"></i>
+                                    Reset Settings
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- About -->
+                <section class="settings-section">
+                    <h2>About</h2>
+                    <div class="settings-group">
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label>Version</label>
+                                <p>Aura BreatheWell v1.0.0</p>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label>Support</label>
+                                <p>Get help and support</p>
+                            </div>
+                            <div class="setting-control">
+                                <button class="btn-secondary" onclick="openSupport()">
+                                    <i class="fas fa-question-circle"></i>
+                                    Help Center
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label>Privacy Policy</label>
+                                <p>Read our privacy policy</p>
+                            </div>
+                            <div class="setting-control">
+                                <button class="btn-secondary" onclick="openPrivacyPolicy()">
+                                    <i class="fas fa-shield-alt"></i>
+                                    Privacy Policy
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <label>Terms of Service</label>
+                                <p>Read our terms of service</p>
+                            </div>
+                            <div class="setting-control">
+                                <button class="btn-secondary" onclick="openTerms()">
+                                    <i class="fas fa-file-contract"></i>
+                                    Terms of Service
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Confirmation Modal -->
+    <div class="modal-overlay" id="confirmationModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="confirmTitle">Confirm Action</h3>
+                <button class="modal-close" onclick="closeModal('confirmationModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="confirmMessage">Are you sure you want to proceed?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal('confirmationModal')">
+                    Cancel
+                </button>
+                <button class="btn-danger" id="confirmButton" onclick="confirmAction()">
+                    Confirm
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/firebase-config.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSettings();
+        });
+
+        function loadSettings() {
+            const settings = JSON.parse(localStorage.getItem('appSettings') || '{}');
+            
+            // Load all settings values
+            Object.keys(settings).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    if (element.type === 'checkbox') {
+                        element.checked = settings[key];
+                    } else {
+                        element.value = settings[key];
+                    }
+                }
+            });
+
+            // Update reminder time visibility
+            updateReminderTimeVisibility();
+        }
+
+        function saveSettings() {
+            const settings = JSON.parse(localStorage.getItem('appSettings') || '{}');
+            localStorage.setItem('appSettings', JSON.stringify(settings));
+        }
+
+        function toggleSetting(settingName, value) {
+            const settings = JSON.parse(localStorage.getItem('appSettings') || '{}');
+            settings[settingName] = value;
+            localStorage.setItem('appSettings', JSON.stringify(settings));
+            
+            showNotification(`${settingName} ${value ? 'enabled' : 'disabled'}`, 'success');
+        }
+
+        function changeTheme(theme) {
+            const settings = JSON.parse(localStorage.getItem('appSettings') || '{}');
+            settings.theme = theme;
+            localStorage.setItem('appSettings', JSON.stringify(settings));
+            
+            // Apply theme immediately
+            document.body.className = document.body.className.replace(/theme-\w+/g, '');
+            if (theme !== 'auto') {
+                document.body.classList.add(`theme-${theme}`);
+            }
+            
+            showNotification(`Theme changed to ${theme}`, 'success');
+        }
+
+        function changeLanguage(language) {
+            const settings = JSON.parse(localStorage.getItem('appSettings') || '{}');
+            settings.language = language;
+            localStorage.setItem('appSettings', JSON.stringify(settings));
+            
+            showNotification('Language will be updated on next app restart', 'info');
+        }
+
+        function setDefaultSession(sessionType) {
+            const settings = JSON.parse(localStorage.getItem('appSettings') || '{}');
+            settings.defaultSession = sessionType;
+            localStorage.setItem('appSettings', JSON.stringify(settings));
+            
+            showNotification('Default session type updated', 'success');
+        }
+
+        function setSessionLength(length) {
+            const settings = JSON.parse(localStorage.getItem('appSettings') || '{}');
+            settings.sessionLength = parseInt(length);
+            localStorage.setItem('appSettings', JSON.stringify(settings));
+            
+            showNotification(`Default session length set to ${Math.round(length/60)} minutes`, 'success');
+        }
+
+        function toggleNotification(notificationType, enabled) {
+            const settings = JSON.parse(localStorage.getItem('appSettings') || '{}');
+            settings[notificationType] = enabled;
+            localStorage.setItem('appSettings', JSON.stringify(settings));
+            
+            if (notificationType === 'dailyReminder') {
+                updateReminderTimeVisibility();
+                
+                if (enabled) {
+                    requestNotificationPermission();
+                }
+            }
+            
+            showNotification(`${notificationType} ${enabled ? 'enabled' : 'disabled'}`, 'success');
+        }
+
+        function updateReminderTimeVisibility() {
+            const reminderEnabled = document.getElementById('dailyReminder').checked;
+            const reminderTimeContainer = document.getElementById('reminderTimeContainer');
+            
+            if (reminderEnabled) {
+                reminderTimeContainer.style.display = 'flex';
+            } else {
+                reminderTimeContainer.style.display = 'none';
+            }
+        }
+
+        function setReminderTime(time) {
+            const settings = JSON.parse(localStorage.getItem('appSettings') || '{}');
+            settings.reminderTime = time;
+            localStorage.setItem('appSettings', JSON.stringify(settings));
+            
+            showNotification(`Reminder time set to ${time}`, 'success');
+        }
+
+        function requestNotificationPermission() {
+            if ('Notification' in window) {
+                Notification.requestPermission().then(permission => {
+                    if (permission === 'granted') {
+                        showNotification('Notifications enabled successfully', 'success');
+                    } else {
+                        showNotification('Please enable notifications in browser settings', 'warning');
+                    }
+                });
+            }
+        }
+
+        function toggleLocationAccess(enabled) {
+            const settings = JSON.parse(localStorage.getItem('appSettings') || '{}');
+            settings.locationAccess = enabled;
+            localStorage.setItem('appSettings', JSON.stringify(settings));
+            
+            if (enabled) {
+                navigator.geolocation.getCurrentPosition(
+                    () => showNotification('Location access granted', 'success'),
+                    () => showNotification('Location access denied', 'error')
+                );
+            } else {
+                showNotification('Location access disabled', 'info');
+            }
+        }
+
+        function exportAllData() {
+            const allData = {
+                settings: JSON.parse(localStorage.getItem('appSettings') || '{}'),
+                profile: JSON.parse(localStorage.getItem('userProfile') || '{}'),
+                sessions: JSON.parse(localStorage.getItem('breathingSessions') || '[]'),
+                exportDate: new Date().toISOString()
+            };
+            
+            const dataStr = JSON.stringify(allData, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(dataBlob);
+            link.download = `breathewell-complete-data-${new Date().toISOString().split('T')[0]}.json`;
+            link.click();
+            
+            showNotification('All data exported successfully', 'success');
+        }
+
+        let confirmCallback = null;
+
+        function confirmClearData() {
+            document.getElementById('confirmTitle').textContent = 'Clear All Data';
+            document.getElementById('confirmMessage').textContent = 
+                'This will permanently delete all your sessions, progress, and settings. This action cannot be undone.';
+            document.getElementById('confirmButton').textContent = 'Delete Everything';
+            document.getElementById('confirmButton').className = 'btn-danger';
+            
+            confirmCallback = clearAllData;
+            document.getElementById('confirmationModal').classList.add('active');
+        }
+
+        function clearAllData() {
+            localStorage.clear();
+            showNotification('All data cleared successfully', 'success');
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
+        }
+
+        function resetToDefaults() {
+            document.getElementById('confirmTitle').textContent = 'Reset Settings';
+            document.getElementById('confirmMessage').textContent = 
+                'This will reset all settings to their default values. Your session data will not be affected.';
+            document.getElementById('confirmButton').textContent = 'Reset Settings';
+            document.getElementById('confirmButton').className = 'btn-warning';
+            
+            confirmCallback = performResetToDefaults;
+            document.getElementById('confirmationModal').classList.add('active');
+        }
+
+        function performResetToDefaults() {
+            localStorage.removeItem('appSettings');
+            showNotification('Settings reset to defaults', 'success');
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
+        }
+
+        function confirmAction() {
+            if (confirmCallback) {
+                confirmCallback();
+                confirmCallback = null;
+            }
+            closeModal('confirmationModal');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        function openSupport() {
+            window.open('mailto:support@breathewell.app?subject=Support Request', '_blank');
+        }
+
+        function openPrivacyPolicy() {
+            window.open('/privacy', '_blank');
+        }
+
+        function openTerms() {
+            window.open('/terms', '_blank');
+        }
+
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#2ed573' : type === 'error' ? '#ff4757' : type === 'warning' ? '#ffa502' : '#5352ed'};
+                color: white;
+                padding: 15px 20px;
+                border-radius: 8px;
+                z-index: 1000;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                max-width: 300px;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
