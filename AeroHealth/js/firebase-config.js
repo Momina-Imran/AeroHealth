@@ -15,7 +15,7 @@ class FirebaseConfig {
         // This configuration will be provided when Firebase is actually connected
         // For now, return a placeholder structure
         return {
-            apiKey: process.env.FIREBASE_API_KEY || "AIzaSyBURFGb9n7QDqY6Xgs-hP2r9xh9_VSFQjU",
+            apiKey: process.env.FIREBASE_API_KEY || "YOUR API KEY HERE",
             authDomain: process.env.FIREBASE_AUTH_DOMAIN || "aura-breathwell.firebaseapp.com",
             projectId: process.env.FIREBASE_PROJECT_ID || "aura-breathwell",
             storageBucket: process.env.FIREBASE_STORAGE_BUCKET || "aura-breathwell.firebasestorage.app",
@@ -26,12 +26,12 @@ class FirebaseConfig {
     }
 
     async init() {
-        console.log('🔥 Preparing Firebase configuration...');
+        console.log(' Preparing Firebase configuration...');
         
         try {
             // Check if Firebase SDK is available
             if (typeof firebase === 'undefined') {
-                console.log('📦 Firebase SDK not loaded - running in offline mode');
+                console.log('Firebase SDK not loaded - running in offline mode');
                 this.setupOfflineMode();
                 return;
             }
@@ -41,7 +41,7 @@ class FirebaseConfig {
             
             // Validate configuration
             if (!this.validateConfig(config)) {
-                console.warn('⚠️ Firebase configuration incomplete - running in offline mode');
+                console.warn('Firebase configuration incomplete - running in offline mode');
                 this.setupOfflineMode();
                 return;
             }
@@ -58,13 +58,13 @@ class FirebaseConfig {
             this.isInitialized = true;
             this.isConnected = true;
             
-            console.log('✅ Firebase initialized successfully');
+            console.log(' Firebase initialized successfully');
             
             // Process offline queue
             await this.processOfflineQueue();
             
         } catch (error) {
-            console.error('❌ Firebase initialization failed:', error);
+            console.error(' Firebase initialization failed:', error);
             console.log('📱 Falling back to offline mode');
             this.setupOfflineMode();
         }
